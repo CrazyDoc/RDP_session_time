@@ -15,7 +15,7 @@ $LogON = Get-EventLog -LogName Security -after $startDate|
         }
     )} | 
 
-    sort Time -Unique |Select Time, ClientIP, UserName, LogonType
+    sort Time -Unique | Select Time, ClientIP, UserName, LogonType
 
 $LogON | Select Time, ClientIP, UserName, LogonType
 
@@ -87,17 +87,11 @@ foreach($username in $idList)
             Name = $name
             WorkTime = $wtime
             })
-		
-		$Date = (Get-Date -Format s) -replace ":", "."
+
+        $Date = (Get-Date -Format ″dd_MM_yy_HH:mm″) -replace ":", "."
 		
         $FilePath = "c:\Temp\$Date'_RDP_time_work.csv"
-		
-		$isfile = Test-Path $FilePath
-		if($isfile -eq "True") 
-			{
-			Remove-Item -Path $FilePath
-			}
-			
+
         $FilteredOutput | Sort Name | Export-Csv $FilePath -NoTypeInformation -append
         }
     else{write-host $username.Item1}
