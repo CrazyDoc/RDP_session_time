@@ -9,6 +9,8 @@ Output contains only closed sessions, only for the current day.
 Change the selection processing logic if your server has records of more than 100 users - it is not optimized.
 
 
+
+
 Скрипт powershell для учета времени работы сессий. 
 
 Подготовленно только для русифицированных серверов(измените выборку для Get-EventLog соответствующим языком, если это необходимо). 
