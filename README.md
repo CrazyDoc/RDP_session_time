@@ -1,7 +1,9 @@
 # RDP_session_time
 
 example: 
+
 Path_to_Dir\RDP_time_work_ver_3.ps1 -StartTime "April 27, 2020" -Period 2
+
 Path_to_Dir\RDP_time_work_ver_3.ps1 -StartTime "April 27, 2020"
 
 Powershell script to know the time of the sessions.
