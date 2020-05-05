@@ -1,6 +1,9 @@
-﻿$startDate = [DateTime]::Today #(get-date).AddDays(-1)
+﻿Param(
+    [datetime]$StartTime = "April 27, 2020"
+	$Period = 1
+)
 
-$LogON = Get-EventLog -LogName Security -after $startDate|
+$LogON = Get-EventLog -LogName Security -after $StartTime -before $StartTime.adddays($Period)|
 
     ?{(4624) -contains $_.EventID -and $_.Message -match 'Тип входа:\s\s'}|
 
@@ -28,7 +31,7 @@ foreach ($elem in $LogON)
         else {$idList.Add([Tuple]::Create($elem.UserName))}
     }
 
-$LogOFF = Get-EventLog -LogName Security -after $startDate|
+$LogOFF = Get-EventLog -LogName Security -after $StartTime -before $StartTime.adddays($Period)|
 
     ?{(4634) -contains $_.EventID -and $_.Message -like "*уничтожении*" -and $_.Message -notlike '*Тип входа:*7*' -and $_.Message -notlike '*Тип входа:*10*'}|
 
