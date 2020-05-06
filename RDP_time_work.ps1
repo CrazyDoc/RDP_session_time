@@ -1,5 +1,5 @@
 ﻿Param(
-    [datetime]$StartTime = "April 27, 2020"
+    [datetime]$StartTime = "April 27, 2020",
 	$Period = 1
 )
 
